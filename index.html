@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABRSM 爵士鼓訓練平台 - 一級至二級</title>
+    <meta name="description" content="互動式爵士鼓學習平台，專為ABRSM一級至二級打擊樂考生而設">
+
+    <!-- External Libraries via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <h1 class="logo">ABRSM 爵士鼓訓練平台</h1>
+            <div class="nav-links">
+                <button class="nav-btn active" data-section="home">主頁</button>
+                <button class="nav-btn" data-section="learn">學習</button>
+                <button class="nav-btn" data-section="practice">練習</button>
+                <button class="nav-btn" data-section="exercises">課題</button>
+                <button class="nav-btn" data-section="drumkit">鼓組認識</button>
+            </div>
+            <div class="grade-selector">
+                <button class="grade-btn active" data-grade="1">一級</button>
+                <button class="grade-btn" data-grade="2">二級</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="content-wrapper">
+
+        <!-- HOME SECTION -->
+        <section id="home" class="content-section active">
+            <div class="hero">
+                <h2>歡迎使用 ABRSM 爵士鼓訓練平台</h2>
+                <p class="subtitle">透過互動練習及視覺化回饋，掌握ABRSM一級至二級打擊樂技巧</p>
+
+                <div class="info-cards">
+                    <div class="card">
+                        <h3>🎯 你將學習到</h3>
+                        <ul>
+                            <li>基本鼓法（單擊滾奏、雙擊滾奏、單複合跳）</li>
+                            <li>閱讀鼓譜</li>
+                            <li>穩定拍子與協調性</li>
+                            <li>基本搖滾、流行及華爾茲節奏</li>
+                            <li>裝飾音（Flam）及三連音（二級）</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>🎓 ABRSM 考試要求</h3>
+                        <ul>
+                            <li><strong>一級技術要求：</strong>鼓法演奏（約80 bpm）</li>
+                            <li><strong>二級技術要求：</strong>加入裝飾音及三連音（約90 bpm）</li>
+                            <li><strong>演奏曲目：</strong>3首指定樂曲</li>
+                            <li><strong>視奏：</strong>4-8小節</li>
+                            <li><strong>聽力測試：</strong>脈搏、節奏重複</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>📚 本平台如何幫助你</h3>
+                        <ul>
+                            <li><strong>聆聽：</strong>播放標準示範</li>
+                            <li><strong>觀察：</strong>視覺化節奏圖形</li>
+                            <li><strong>練習：</strong>互動式鼓墊</li>
+                            <li><strong>自我檢查：</strong>追蹤學習進度</li>
+                            <li><strong>認識鼓組：</strong>了解每個鼓件的名稱及聲音</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button class="cta-btn" onclick="navigateToSection('practice')">開始練習</button>
+            </div>
+        </section>
+
+        <!-- LEARN SECTION -->
+        <section id="learn" class="content-section">
+            <h2>學習模組</h2>
+
+            <!-- Rudiments Module -->
+            <div class="module">
+                <h3 class="module-title">基本鼓法（Rudiments）</h3>
+                <p class="module-desc">掌握ABRSM一級及二級所需的基本鼓法</p>
+
+                <div class="rudiment-list">
+                    <!-- Single Stroke Roll -->
+                    <div class="rudiment-card" data-rudiment="single-stroke">
+                        <h4>單擊滾奏 (Single Stroke Roll) <span class="grade-badge">一級</span></h4>
+                        <div class="sticking">右 左 右 左 右 左 右 左</div>
+                        <p><strong>重點：</strong>雙手音色均勻、時間間隔平均</p>
+                        <p><strong>速度：</strong>80 bpm（四分音符或八分音符）</p>
+                        <div class="rudiment-actions">
+                            <button class="btn-listen" data-pattern="single-stroke">▶ 聆聽</button>
+                            <button class="btn-practice" onclick="navigateToSection('practice', 'single-stroke')">練習</button>
+                        </div>
+                        <div class="teaching-note">
+                            💡 <strong>教學提示：</strong>想像節拍器滴答聲 - 兩隻手聲音要完全一致。
+                            在視覺化畫面中，粒子應該均勻分佈。
+                        </div>
+                    </div>
+
+                    <!-- Double Stroke Roll -->
+                    <div class="rudiment-card" data-rudiment="double-stroke">
+                        <h4>雙擊滾奏 (Double Stroke Roll) <span class="grade-badge">一級</span></h4>
+                        <div class="sticking">右右 左左 右右 左左</div>
+                        <p><strong>重點：</strong>利用鼓棒反彈控制第二下</p>
+                        <p><strong>速度：</strong>80 bpm（十六分音符成雙）</p>
+                        <div class="rudiment-actions">
+                            <button class="btn-listen" data-pattern="double-stroke">▶ 聆聽</button>
+                            <button class="btn-practice" onclick="navigateToSection('practice', 'double-stroke')">練習</button>
+                        </div>
+                        <div class="teaching-note">
+                            💡 <strong>教學提示：</strong>讓鼓棒自然反彈，第二下使用反彈力。
+                            在視覺化畫面中，觀察成對的粒子。
+                        </div>
+                    </div>
+
+                    <!-- Single Paradiddle -->
+                    <div class="rudiment-card" data-rudiment="paradiddle">
+                        <h4>單複合跳 (Single Paradiddle) <span class="grade-badge">一級</span></h4>
+                        <div class="sticking">右 左 右右  左 右 左左</div>
+                        <p><strong>重點：</strong>單擊與雙擊之間流暢轉換</p>
+                        <p><strong>速度：</strong>80 bpm</p>
+                        <div class="rudiment-actions">
+                            <button class="btn-listen" data-pattern="paradiddle">▶ 聆聽</button>
+                            <button class="btn-practice" onclick="navigateToSection('practice', 'paradiddle')">練習</button>
+                        </div>
+                        <div class="teaching-note">
+                            💡 <strong>教學提示：</strong>重音自然落在每組的第一個音。
+                            這能訓練全套鼓組所需的手腳協調。
+                        </div>
+                    </div>
+
+                    <!-- GRADE 2: Flam -->
+                    <div class="rudiment-card grade-2-content" data-rudiment="flam">
+                        <h4>裝飾音 (Flam) <span class="grade-badge grade-2">二級</span></h4>
+                        <div class="sticking">左右 右左 左右 右左</div>
+                        <p><strong>重點：</strong>輕音符（grace note）緊接主音符，創造「較厚」的聲音</p>
+                        <p><strong>速度：</strong>90 bpm</p>
+                        <div class="rudiment-actions">
+                            <button class="btn-listen" data-pattern="flam">▶ 聆聽</button>
+                            <button class="btn-practice" onclick="navigateToSection('practice', 'flam')">練習</button>
+                        </div>
+                        <div class="teaching-note">
+                            💡 <strong>教學提示：</strong>輕音符要低且快，主音符要高且強。兩個音幾乎同時，但不完全同時。
+                            在視覺化畫面中，會看到非常接近但不重疊的粒子。
+                        </div>
+                    </div>
+
+                    <!-- GRADE 2: Double Paradiddle -->
+                    <div class="rudiment-card grade-2-content" data-rudiment="double-paradiddle">
+                        <h4>雙複合跳 (Double Paradiddle) <span class="grade-badge grade-2">二級</span></h4>
+                        <div class="sticking">右 左 右 左 右右  左 右 左 右 左左</div>
+                        <p><strong>重點：</strong>四個交替單擊加一個雙擊，訓練手指靈活度</p>
+                        <p><strong>速度：</strong>85 bpm</p>
+                        <div class="rudiment-actions">
+                            <button class="btn-listen" data-pattern="double-paradiddle">▶ 聆聽</button>
+                            <button class="btn-practice" onclick="navigateToSection('practice', 'double-paradiddle')">練習</button>
+                        </div>
+                        <div class="teaching-note">
+                            💡 <strong>教學提示：</strong>比單複合跳更長的型態，需要記住6個音的循環。保持流暢不要在雙擊處停頓。
+                        </div>
+                    </div>
+
+                    <!-- GRADE 2: Drag -->
+                    <div class="rudiment-card grade-2-content" data-rudiment="drag">
+                        <h4>拖音/滾音 (Drag/Ruff) <span class="grade-badge grade-2">二級</span></h4>
+                        <div class="sticking">左左 右  右右 左</div>
+                        <p><strong>重點：</strong>兩個快速雙擊（buzz）加主音符</p>
+                        <p><strong>速度：</strong>80 bpm</p>
+                        <div class="rudiment-actions">
+                            <button class="btn-listen" data-pattern="drag">▶ 聆聽</button>
+                            <button class="btn-practice" onclick="navigateToSection('practice', 'drag')">練習</button>
+                        </div>
+                        <div class="teaching-note">
+                            💡 <strong>教學提示：</strong>前兩下要非常快且輕，第三下是重音。類似「嗒嗒-碰」的聲音效果。
+                        </div>
+                    </div>
+
+                    <!-- GRADE 2: Accents -->
+                    <div class="rudiment-card grade-2-content" data-rudiment="accents">
+                        <h4>重音控制 (Accent Control) <span class="grade-badge grade-2">二級</span></h4>
+                        <div class="sticking">右 左 右 左（第1、3個重音）</div>
+                        <p><strong>重點：</strong>在連續擊打中加入力度變化（重音與輕音對比）</p>
+                        <p><strong>速度：</strong>90 bpm</p>
+                        <div class="rudiment-actions">
+                            <button class="btn-listen" data-pattern="accents">▶ 聆聽</button>
+                            <button class="btn-practice" onclick="navigateToSection('practice', 'accents')">練習</button>
+                        </div>
+                        <div class="teaching-note">
+                            💡 <strong>教學提示：</strong>重音要明顯高舉並用力敲擊，非重音要低且輕。音量差異要清楚可聞。
+                        </div>
+                    </div>
+
+                    <!-- GRADE 2: 16th Note Coordination -->
+                    <div class="rudiment-card grade-2-content" data-rudiment="sixteenth-coord">
+                        <h4>十六分音符協調 <span class="grade-badge grade-2">二級</span></h4>
+                        <div class="sticking">手：♬♬♬♬ 腳：♩ ♩</div>
+                        <p><strong>重點：</strong>手打十六分音符，腳打四分音符（手腳速度比4:1）</p>
+                        <p><strong>速度：</strong>70 bpm</p>
+                        <div class="rudiment-actions">
+                            <button class="btn-listen" data-pattern="sixteenth-coord">▶ 聆聽</button>
+                            <button class="btn-practice" onclick="navigateToSection('practice', 'sixteenth-coord')">練習</button>
+                        </div>
+                        <div class="teaching-note">
+                            💡 <strong>教學提示：</strong>這是二級最重要的協調訓練。先分開練，再合併。腳要穩定如節拍器。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rhythm Patterns Module -->
+            <div class="module">
+                <h3 class="module-title">基本節奏型態</h3>
+                <p class="module-desc">學習搖滾、流行及華爾茲風格的基礎節奏</p>
+
+                <div class="rhythm-grid">
+                    <div class="rhythm-card">
+                        <h4>四分音符 (4/4) <span class="grade-badge">一級</span></h4>
+                        <div class="notation-example">♩ ♩ ♩ ♩</div>
+                        <p>每拍一個音 - 穩定脈搏的基礎</p>
+                        <button class="btn-listen" data-pattern="quarter-notes">▶ 聆聽</button>
+                    </div>
+
+                    <div class="rhythm-card">
+                        <h4>八分音符 (4/4) <span class="grade-badge">一級</span></h4>
+                        <div class="notation-example">♫ ♫ ♫ ♫</div>
+                        <p>每拍兩個音 - 創造前進動力</p>
+                        <button class="btn-listen" data-pattern="eighth-notes">▶ 聆聽</button>
+                    </div>
+
+                    <div class="rhythm-card">
+                        <h4>基本搖滾節奏 <span class="grade-badge">一級</span></h4>
+                        <div class="notation-example">大鼓: 1 & 3 | 小鼓: 2 & 4</div>
+                        <p>搖滾音樂的基礎節奏型</p>
+                        <button class="btn-listen" data-pattern="rock-beat">▶ 聆聽</button>
+                    </div>
+
+                    <div class="rhythm-card">
+                        <h4>3/4 華爾茲 <span class="grade-badge">一級</span></h4>
+                        <div class="notation-example">♩ ♩ ♩</div>
+                        <p>每小節三拍</p>
+                        <button class="btn-listen" data-pattern="waltz">▶ 聆聽</button>
+                    </div>
+
+                    <div class="rhythm-card grade-2-content">
+                        <h4>三連音 (Triplets) <span class="grade-badge grade-2">二級</span></h4>
+                        <div class="notation-example">𝄞 𝄞 𝄞</div>
+                        <p>每拍三個音 - 三等分一拍</p>
+                        <button class="btn-listen" data-pattern="triplets">▶ 聆聽</button>
+                    </div>
+
+                    <div class="rhythm-card grade-2-content">
+                        <h4>十六分音符 <span class="grade-badge grade-2">二級</span></h4>
+                        <div class="notation-example">♬ ♬ ♬ ♬</div>
+                        <p>每拍四個音 - 快速細分</p>
+                        <button class="btn-listen" data-pattern="sixteenth-notes">▶ 聆聽</button>
+                    </div>
+
+                    <div class="rhythm-card grade-2-content">
+                        <h4>切分音節奏 (Syncopation) <span class="grade-badge grade-2">二級</span></h4>
+                        <div class="notation-example">♩ ♫ ♩</div>
+                        <p>在弱拍上加重音 - 創造律動感</p>
+                        <button class="btn-listen" data-pattern="syncopation">▶ 聆聽</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- DRUM KIT VISUAL SECTION -->
+        <section id="drumkit" class="content-section">
+            <h2>鼓組認識</h2>
+            <p class="section-intro">認識爵士鼓組的每個部分，了解每件樂器的名稱及其發出的聲音</p>
+
+            <div class="drumkit-visual">
+                <h3>標準爵士鼓組配置</h3>
+                <p class="drumkit-desc">點擊下方鼓件了解詳情及試聽聲音</p>
+
+                <div class="drumkit-diagram">
+                    <!-- Drum Kit SVG/Visual Representation -->
+                    <div class="drum-component snare-component" data-drum="snare">
+                        <div class="drum-icon">🥁</div>
+                        <div class="drum-name">小鼓 (Snare Drum)</div>
+                        <div class="drum-detail">
+                            <p><strong>位置：</strong>演奏者前方中央</p>
+                            <p><strong>聲音特徵：</strong>清脆、明亮、高音</p>
+                            <p><strong>用途：</strong>提供backbeat（2和4拍）</p>
+                            <p><strong>考試要求：</strong>一級及二級都需要</p>
+                            <button class="drum-play-btn" data-drum="snare">試聽聲音</button>
+                        </div>
+                    </div>
+
+                    <div class="drum-component bass-component" data-drum="bass">
+                        <div class="drum-icon">🎵</div>
+                        <div class="drum-name">大鼓/低音鼓 (Bass Drum)</div>
+                        <div class="drum-detail">
+                            <p><strong>位置：</strong>地面上，用腳踏板演奏</p>
+                            <p><strong>聲音特徵：</strong>低沉、有力、重擊感</p>
+                            <p><strong>用途：</strong>提供節奏的基礎（通常1和3拍）</p>
+                            <p><strong>考試要求：</strong>一級及二級都需要</p>
+                            <button class="drum-play-btn" data-drum="bass">試聽聲音</button>
+                        </div>
+                    </div>
+
+                    <div class="drum-component hihat-component" data-drum="hihat">
+                        <div class="drum-icon">💿</div>
+                        <div class="drum-name">腳踏鈸 (Hi-Hat)</div>
+                        <div class="drum-detail">
+                            <p><strong>位置：</strong>演奏者左側，用腳控制開合</p>
+                            <p><strong>聲音特徵：</strong>金屬、清脆、高頻</p>
+                            <p><strong>用途：</strong>保持穩定的八分音符節奏</p>
+                            <p><strong>考試要求：</strong>一級及二級都需要</p>
+                            <button class="drum-play-btn" data-drum="hihat">試聽聲音</button>
+                        </div>
+                    </div>
+
+                    <div class="drum-component tom-component grade-2-content" data-drum="tom">
+                        <div class="drum-icon">🎶</div>
+                        <div class="drum-name">中鼓/嗵鼓 (Tom-Toms) <span class="grade-badge grade-2">二級</span></div>
+                        <div class="drum-detail">
+                            <p><strong>位置：</strong>小鼓上方及旁邊（高、中、低音）</p>
+                            <p><strong>聲音特徵：</strong>共鳴、有音高差異</p>
+                            <p><strong>用途：</strong>過門（fills）、旋律性敲擊</p>
+                            <p><strong>考試要求：</strong>主要在二級</p>
+                            <button class="drum-play-btn" data-drum="tom">試聽聲音</button>
+                        </div>
+                    </div>
+
+                    <div class="drum-component crash-component grade-2-content" data-drum="crash">
+                        <div class="drum-icon">⭐</div>
+                        <div class="drum-name">碎音鈸 (Crash Cymbal) <span class="grade-badge grade-2">二級</span></div>
+                        <div class="drum-detail">
+                            <p><strong>位置：</strong>鼓組上方（通常左上或右上）</p>
+                            <p><strong>聲音特徵：</strong>爆炸性、響亮、持續震動</p>
+                            <p><strong>用途：</strong>重音、樂句結束、強調</p>
+                            <p><strong>考試要求：</strong>主要在二級</p>
+                            <button class="drum-play-btn" data-drum="crash">試聽聲音</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="drumkit-note">
+                    <h4>💡 學習提示</h4>
+                    <ul>
+                        <li><strong>一級考生：</strong>需熟練掌握小鼓、大鼓及腳踏鈸的基本配合</li>
+                        <li><strong>二級考生：</strong>需加入中鼓及碎音鈸，能做基本過門</li>
+                        <li>每個鼓件的音色都不同，練習時要聆聽並記住各自的特性</li>
+                        <li>實際鼓組的配置可能因演奏者習慣而有所不同</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRACTICE SECTION -->
+        <section id="practice" class="content-section">
+            <h2>互動練習區</h2>
+
+            <div class="practice-container">
+                <!-- Controls Panel -->
+                <div class="controls-panel">
+                    <div class="control-group">
+                        <label>速度 (BPM)</label>
+                        <input type="range" id="tempo-slider" min="40" max="120" value="80" step="1">
+                        <span id="tempo-display">80</span> BPM
+                    </div>
+
+                    <div class="control-group">
+                        <label>節拍器</label>
+                        <button id="metronome-toggle" class="toggle-btn">關閉</button>
+                    </div>
+
+                    <div class="control-group">
+                        <label>視覺化</label>
+                        <button id="viz-toggle" class="toggle-btn active">開啟</button>
+                    </div>
+
+                    <div class="control-group">
+                        <button id="clear-canvas" class="btn-secondary">清除畫面</button>
+                    </div>
+
+                    <div class="control-group">
+                        <button id="stop-all-audio" class="btn-stop">⏹ 停止播放</button>
+                    </div>
+                </div>
+
+                <!-- Rhythm Visualizer (Matter.js Canvas) -->
+                <div class="visualizer-container">
+                    <h3>節奏視覺化 - 反重力空間</h3>
+                    <p class="viz-instructions">
+                        觀察你的節奏化為視覺！每次敲擊會產生彩色粒子，在空間中永久彈跳。
+                        穩定節奏 = 粒子均勻分佈。加快/放慢 = 粒子間距不規則。
+                    </p>
+                    <canvas id="rhythm-canvas"></canvas>
+                    <div class="viz-legend">
+                        <span class="legend-item"><span class="color-box snare"></span> 小鼓</span>
+                        <span class="legend-item"><span class="color-box bass"></span> 大鼓</span>
+                        <span class="legend-item"><span class="color-box hihat"></span> 腳踏鈸</span>
+                    </div>
+                </div>
+
+                <!-- Drum Pads -->
+                <div class="drum-pads-container">
+                    <h3>鼓墊</h3>
+                    <p class="pad-instructions">點擊鼓墊或使用鍵盤：<kbd>A</kbd> = 小鼓 | <kbd>S</kbd> = 大鼓 | <kbd>D</kbd> = 腳踏鈸</p>
+
+                    <div class="pads-grid">
+                        <button class="drum-pad snare-pad" data-drum="snare" data-key="a">
+                            <span class="pad-label">小鼓</span>
+                            <span class="pad-key">A</span>
+                        </button>
+
+                        <button class="drum-pad bass-pad" data-drum="bass" data-key="s">
+                            <span class="pad-label">大鼓</span>
+                            <span class="pad-key">S</span>
+                        </button>
+
+                        <button class="drum-pad hihat-pad" data-drum="hihat" data-key="d">
+                            <span class="pad-label">腳踏鈸</span>
+                            <span class="pad-key">D</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXERCISES SECTION -->
+        <section id="exercises" class="content-section">
+            <h2>指導性練習課題</h2>
+
+            <div class="exercise-intro">
+                <p>跟隨這些有系統的課題逐步建立你的技巧。每個課題包含示範、練習模式及自我評估清單。</p>
+            </div>
+
+            <!-- Exercise 1: Single Stroke -->
+            <div class="exercise-block">
+                <div class="exercise-header">
+                    <h3>課題1：單擊滾奏 <span class="grade-badge">一級</span></h3>
+                    <span class="difficulty">難度：初級</span>
+                </div>
+
+                <div class="exercise-content">
+                    <div class="exercise-steps">
+                        <h4>學習步驟：</h4>
+                        <ol>
+                            <li><strong>聆聽：</strong>點擊「播放示範」聆聽80 bpm的目標節奏</li>
+                            <li><strong>觀察：</strong>觀看視覺化畫面中均勻分佈的粒子</li>
+                            <li><strong>慢速練習：</strong>從60 bpm開始，專注於雙手音量平衡</li>
+                            <li><strong>加速：</strong>逐步提升至80 bpm</li>
+                            <li><strong>自我檢查：</strong>能否持續1分鐘保持穩定脈搏？</li>
+                        </ol>
+                    </div>
+
+                    <div class="exercise-actions">
+                        <button class="btn-demo" data-exercise="single-stroke">▶ 播放示範 (80 bpm)</button>
+                        <button class="btn-demo-slow" data-exercise="single-stroke">▶ 慢速播放 (60 bpm)</button>
+                        <button class="btn-start-practice" onclick="navigateToSection('practice', 'single-stroke')">開始練習</button>
+                    </div>
+
+                    <div class="self-check-list">
+                        <h4>自我評估清單：</h4>
+                        <label><input type="checkbox" data-check="ss-1"> 雙手音量相等</label>
+                        <label><input type="checkbox" data-check="ss-2"> 擊打間隔完全均勻</label>
+                        <label><input type="checkbox" data-check="ss-3"> 能在80 bpm下持續30秒不加速/減速</label>
+                        <label><input type="checkbox" data-check="ss-4"> 全程保持握棒放鬆</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exercise 2: Quarter and Eighth Notes -->
+            <div class="exercise-block">
+                <div class="exercise-header">
+                    <h3>Exercise 2: Quarter & Eighth Note Transitions</h3>
+                    <span class="difficulty">Difficulty: Beginner</span>
+                </div>
+
+                <div class="exercise-content">
+                    <div class="exercise-steps">
+                        <h4>Pattern:</h4>
+                        <div class="notation-display">
+                            <p>Measure 1-2: Quarter notes (♩ ♩ ♩ ♩)</p>
+                            <p>Measure 3-4: Eighth notes (♫ ♫ ♫ ♫)</p>
+                            <p>Repeat and switch smoothly</p>
+                        </div>
+
+                        <h4>Learning Steps:</h4>
+                        <ol>
+                            <li><strong>Listen:</strong> Hear the rhythm transition</li>
+                            <li><strong>Watch:</strong> See how particle spacing changes (quarter = wider, eighth = closer)</li>
+                            <li><strong>Practice:</strong> Focus on maintaining steady pulse during the transition</li>
+                            <li><strong>Challenge:</strong> Can you switch back and forth without hesitation?</li>
+                        </ol>
+                    </div>
+
+                    <div class="exercise-actions">
+                        <button class="btn-demo" data-exercise="quarter-eighth">▶ Play Demo (80 bpm)</button>
+                        <button class="btn-demo-slow" data-exercise="quarter-eighth">▶ Play Slow (60 bpm)</button>
+                        <button class="btn-start-practice" onclick="navigateToSection('practice', 'quarter-eighth')">Start Practice</button>
+                    </div>
+
+                    <div class="self-check-list">
+                        <h4>Self-Assessment Checklist:</h4>
+                        <label><input type="checkbox" data-check="qe-1"> Quarter notes are steady and even</label>
+                        <label><input type="checkbox" data-check="qe-2"> Eighth notes are exactly twice as fast as quarters</label>
+                        <label><input type="checkbox" data-check="qe-3"> Transition between patterns is smooth (no hesitation)</label>
+                        <label><input type="checkbox" data-check="qe-4"> Can repeat the pattern 4 times without losing tempo</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exercise 3: Basic Rock Beat (Full Kit Coordination) -->
+            <div class="exercise-block">
+                <div class="exercise-header">
+                    <h3>Exercise 3: Basic Rock Beat</h3>
+                    <span class="difficulty">Difficulty: Intermediate</span>
+                </div>
+
+                <div class="exercise-content">
+                    <div class="exercise-steps">
+                        <h4>Pattern (4/4 time):</h4>
+                        <div class="notation-display">
+                            <p><strong>Bass Drum:</strong> Beats 1 and 3</p>
+                            <p><strong>Snare Drum:</strong> Beats 2 and 4</p>
+                            <p><strong>Hi-Hat:</strong> Steady eighth notes (all beats)</p>
+                        </div>
+
+                        <h4>Learning Steps:</h4>
+                        <ol>
+                            <li><strong>Isolate Parts:</strong> Practice each drum separately first</li>
+                            <li><strong>Combine 2:</strong> Bass + Snare, then add Hi-Hat last</li>
+                            <li><strong>Listen:</strong> Play demo to hear how parts lock together</li>
+                            <li><strong>Watch:</strong> See the three-color pattern in the visualizer</li>
+                            <li><strong>Practice:</strong> Start slow (60 bpm), increase gradually</li>
+                        </ol>
+                    </div>
+
+                    <div class="exercise-actions">
+                        <button class="btn-demo" data-exercise="rock-beat">▶ Play Demo (80 bpm)</button>
+                        <button class="btn-demo-slow" data-exercise="rock-beat">▶ Play Slow (60 bpm)</button>
+                        <button class="btn-start-practice" onclick="navigateToSection('practice', 'rock-beat')">Start Practice</button>
+                    </div>
+
+                    <div class="self-check-list">
+                        <h4>Self-Assessment Checklist:</h4>
+                        <label><input type="checkbox" data-check="rb-1"> All three parts maintain steady pulse independently</label>
+                        <label><input type="checkbox" data-check="rb-2"> Bass and Snare land precisely on correct beats</label>
+                        <label><input type="checkbox" data-check="rb-3"> Hi-Hat eighth notes remain even throughout</label>
+                        <label><input type="checkbox" data-check="rb-4"> Can play continuously for 1 minute without stopping</label>
+                        <label><input type="checkbox" data-check="rb-5"> Body remains relaxed (no tension in shoulders/arms)</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRADE 2 Exercise: Flam -->
+            <div class="exercise-block grade-2-content">
+                <div class="exercise-header">
+                    <h3>課題4：裝飾音 (Flam) <span class="grade-badge grade-2">二級</span></h3>
+                    <span class="difficulty">難度：中級</span>
+                </div>
+                <div class="exercise-content">
+                    <div class="exercise-steps">
+                        <h4>學習步驟：</h4>
+                        <ol>
+                            <li><strong>聆聽：</strong>聆聽輕音符與主音符的細微時間差</li>
+                            <li><strong>練習：</strong>輕音符要低且快，主音符要高且強</li>
+                            <li><strong>重點：</strong>兩個音幾乎同時但不完全同時</li>
+                            <li><strong>速度：</strong>從70 bpm開始，逐步提升至90 bpm</li>
+                        </ol>
+                    </div>
+                    <div class="exercise-actions">
+                        <button class="btn-demo" data-exercise="flam">▶ 播放示範 (90 bpm)</button>
+                        <button class="btn-demo-slow" data-exercise="flam">▶ 慢速播放 (70 bpm)</button>
+                        <button class="btn-start-practice" onclick="navigateToSection('practice', 'flam')">開始練習</button>
+                    </div>
+                    <div class="self-check-list">
+                        <h4>自我評估清單：</h4>
+                        <label><input type="checkbox" data-check="flam-1"> 能清楚聽到輕音符與主音符的分別</label>
+                        <label><input type="checkbox" data-check="flam-2"> 兩音時間差一致（不會忽快忽慢）</label>
+                        <label><input type="checkbox" data-check="flam-3"> 能在90 bpm下保持準確度</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>ABRSM 爵士鼓訓練平台 | 專為一級至二級打擊樂考生而設的教學工具</p>
+        <p>使用 Matter.js（物理引擎）及 Tone.js（音頻引擎）製作</p>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/visualizer.js"></script>
+    <script src="js/audio-engine.js"></script>
+    <script src="js/exercises.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
