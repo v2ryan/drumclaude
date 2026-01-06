@@ -57,6 +57,7 @@ body {
     color: var(--text-dark);
     line-height: 1.6;
     overflow-x: hidden;
+    font-size: 18px;
 }
 
 /* === NAVIGATION === */
@@ -96,11 +97,12 @@ body {
     background: transparent;
     border: none;
     color: white;
-    padding: var(--spacing-xs) var(--spacing-sm);
+    padding: 12px 20px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.1rem;
     border-radius: 5px;
     transition: background 0.3s ease;
+    min-height: 44px;
 }
 
 .nav-btn:hover {
@@ -121,11 +123,13 @@ body {
     background: var(--secondary);
     border: 2px solid transparent;
     color: white;
-    padding: var(--spacing-xs) var(--spacing-sm);
+    padding: 10px 18px;
     cursor: pointer;
     border-radius: 5px;
     font-weight: bold;
+    font-size: 1.1rem;
     transition: all 0.3s ease;
+    min-height: 44px;
 }
 
 .grade-btn.active {
@@ -176,6 +180,7 @@ body {
     font-size: 2.5rem;
     margin-bottom: var(--spacing-sm);
     color: var(--primary);
+    font-weight: 700;
 }
 
 .subtitle {
@@ -195,8 +200,9 @@ body {
     background: var(--card-bg);
     padding: var(--spacing-lg);
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     text-align: left;
+    border: 2px solid rgba(44, 62, 80, 0.1);
 }
 
 .card h3 {
@@ -217,12 +223,13 @@ body {
     background: var(--accent);
     color: white;
     border: none;
-    padding: var(--spacing-sm) var(--spacing-lg);
-    font-size: 1.2rem;
+    padding: 16px 32px;
+    font-size: 1.3rem;
     font-weight: bold;
     border-radius: 8px;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    min-height: 56px;
 }
 
 .cta-btn:hover {
@@ -240,11 +247,12 @@ body {
 }
 
 .module-title {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: var(--spacing-sm);
     color: var(--primary);
-    border-bottom: 3px solid var(--accent);
+    border-bottom: 4px solid var(--accent);
     padding-bottom: var(--spacing-xs);
+    font-weight: 700;
 }
 
 .module-desc {
@@ -266,8 +274,10 @@ body {
 }
 
 .rudiment-card h4 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     margin-bottom: var(--spacing-xs);
+    font-weight: 700;
+    color: var(--primary);
 }
 
 .sticking {
@@ -306,13 +316,14 @@ body {
 .btn-demo,
 .btn-demo-slow,
 .btn-start-practice {
-    padding: var(--spacing-xs) var(--spacing-md);
+    padding: 12px 24px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: bold;
     transition: all 0.3s ease;
+    min-height: 48px;
 }
 
 .btn-listen {
@@ -433,27 +444,34 @@ body {
 .control-group label {
     font-weight: bold;
     color: var(--primary);
+    font-size: 1.1rem;
 }
 
 #tempo-slider {
-    width: 150px;
+    width: 200px;
+    height: 8px;
 }
 
 #tempo-display {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: var(--accent);
-    min-width: 40px;
+    min-width: 50px;
+    background: rgba(39, 174, 96, 0.1);
+    padding: 4px 12px;
+    border-radius: 5px;
 }
 
 .toggle-btn {
-    padding: var(--spacing-xs) var(--spacing-md);
+    padding: 10px 20px;
     border: 2px solid var(--text-light);
     background: white;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    font-size: 1.1rem;
     transition: all 0.3s ease;
+    min-height: 44px;
 }
 
 .toggle-btn.active {
@@ -463,13 +481,15 @@ body {
 }
 
 .btn-secondary {
-    padding: var(--spacing-xs) var(--spacing-md);
+    padding: 10px 20px;
     background: var(--secondary);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    font-size: 1.1rem;
+    min-height: 44px;
 }
 
 .btn-secondary:hover {
@@ -477,16 +497,17 @@ body {
 }
 
 .btn-stop {
-    padding: var(--spacing-sm) var(--spacing-lg);
+    padding: var(--spacing-md) var(--spacing-xl);
     background: #e74c3c;
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    min-height: 56px;
 }
 
 .btn-stop:hover {
@@ -511,18 +532,21 @@ body {
 .visualizer-container h3 {
     margin-bottom: var(--spacing-xs);
     color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 .viz-instructions {
-    color: var(--text-light);
+    color: var(--text-dark);
     margin-bottom: var(--spacing-md);
-    font-size: 0.95rem;
+    font-size: 1rem;
+    line-height: 1.7;
 }
 
 #rhythm-canvas {
     width: 100%;
     height: 400px;
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    /* background removed - Matter.js handles it */
     border-radius: 8px;
     display: block;
     box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
@@ -564,38 +588,44 @@ body {
 .drum-pads-container h3 {
     margin-bottom: var(--spacing-xs);
     color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 .pad-instructions {
-    color: var(--text-light);
+    color: var(--text-dark);
     margin-bottom: var(--spacing-md);
+    font-size: 1rem;
+    line-height: 1.7;
 }
 
 kbd {
     background: var(--primary);
     color: white;
-    padding: 2px 8px;
-    border-radius: 3px;
+    padding: 4px 10px;
+    border-radius: 4px;
     font-family: var(--font-mono);
     font-weight: bold;
+    font-size: 1rem;
 }
 
 .pads-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: var(--spacing-md);
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
 }
 
-/* EDUCATIONAL NOTE: Large touch targets (160x160px) for accessibility */
+/* EDUCATIONAL NOTE: Large touch targets (200x200px+) for accessibility */
 .drum-pad {
     width: 100%;
     aspect-ratio: 1;
+    min-height: 200px;
     border: none;
     border-radius: 15px;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     color: white;
     display: flex;
@@ -604,7 +634,7 @@ kbd {
     justify-content: center;
     gap: var(--spacing-xs);
     transition: all 0.1s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
     position: relative;
     overflow: hidden;
 }
@@ -628,14 +658,16 @@ kbd {
 }
 
 .pad-label {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
 .pad-key {
-    font-size: 1rem;
-    background: rgba(255,255,255,0.3);
-    padding: 5px 15px;
-    border-radius: 20px;
+    font-size: 1.3rem;
+    background: rgba(255,255,255,0.4);
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-weight: 700;
 }
 
 /* Pad hit animation */
@@ -769,8 +801,9 @@ kbd {
 .self-check-list input[type="checkbox"] {
     margin-right: var(--spacing-xs);
     cursor: pointer;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
+    accent-color: var(--accent);
 }
 
 /* === DRUM KIT VISUAL SECTION === */
@@ -872,15 +905,16 @@ kbd {
     display: block;
     width: 100%;
     margin-top: var(--spacing-sm);
-    padding: var(--spacing-xs) var(--spacing-md);
+    padding: 12px 24px;
     background: var(--accent);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.1rem;
     transition: all 0.3s ease;
+    min-height: 48px;
 }
 
 .drum-play-btn:hover {
@@ -923,6 +957,10 @@ footer p {
 
 /* === RESPONSIVE DESIGN === */
 @media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
     .nav-container {
         flex-direction: column;
         align-items: stretch;
@@ -934,7 +972,16 @@ footer p {
     }
 
     .hero h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+    }
+
+    .module-title {
+        font-size: 1.6rem;
+    }
+
+    .visualizer-container h3,
+    .drum-pads-container h3 {
+        font-size: 1.3rem;
     }
 
     .info-cards {
@@ -951,7 +998,16 @@ footer p {
 
     .pads-grid {
         grid-template-columns: 1fr;
-        max-width: 300px;
+        max-width: 100%;
+        padding: 0 var(--spacing-md);
+    }
+
+    .drum-pad {
+        min-height: 180px;
+    }
+
+    .pad-label {
+        font-size: 1.8rem;
     }
 
     .exercise-header {
@@ -978,5 +1034,230 @@ footer p {
 
     .card {
         border: 2px solid var(--primary);
+    }
+}
+
+/* === UI IMPROVEMENTS === */
+
+/* CTA Section */
+.cta-section {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--spacing-lg);
+}
+
+.cta-primary {
+    background: var(--accent);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-secondary {
+    background: var(--secondary);
+}
+
+.btn-arrow {
+    display: inline-block;
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.cta-primary:hover .btn-arrow {
+    transform: translateX(5px);
+}
+
+/* Enhanced Button States */
+.btn-listen,
+.btn-practice,
+.btn-demo,
+.btn-demo-slow,
+.btn-start-practice {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-listen::before,
+.btn-practice::before,
+.btn-demo::before,
+.btn-demo-slow::before,
+.btn-start-practice::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-listen:active::before,
+.btn-practice:active::before,
+.btn-demo:active::before,
+.btn-demo:active::before,
+.btn-start-practice:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Drum pad improvements */
+.drum-pad {
+    position: relative;
+}
+
+.pad-glow,
+.pad-ripple {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.drum-pad:active .pad-glow {
+    animation: glow-pulse 0.3s ease-out;
+}
+
+@keyframes glow-pulse {
+    0% {
+        opacity: 0;
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.4);
+    }
+    100% {
+        opacity: 0;
+        box-shadow: 0 0 30px 20px rgba(255, 255, 255, 0);
+    }
+}
+
+/* Improved Card Hover Effects */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Rudiment Card Improvements */
+.rudiment-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.rudiment-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Improved Toggle Buttons */
+.toggle-btn {
+    position: relative;
+    padding-left: 45px;
+}
+
+.toggle-btn::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #ccc;
+    transition: all 0.3s ease;
+}
+
+.toggle-btn.active::before {
+    background: white;
+    box-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
+
+/* Better Tempo Display */
+#tempo-display {
+    min-width: 60px;
+    text-align: center;
+}
+
+/* Enhanced Exercise Blocks */
+.exercise-block {
+    border-left: 5px solid var(--accent);
+    transition: all 0.3s ease;
+}
+
+.exercise-block:hover {
+    border-left-color: var(--primary);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Improved Self-Check List */
+.self-check-list label {
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.self-check-list input[type="checkbox"]:checked + span {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+/* Loading States */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+/* Accessibility Focus Styles */
+button:focus-visible,
+input:focus-visible,
+.drum-pad:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Mobile Improvements */
+@media (max-width: 768px) {
+    .cta-section {
+        flex-direction: column;
+    }
+
+    .cta-btn {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .rudiment-actions,
+    .exercise-actions {
+        flex-direction: column;
+    }
+
+    .rudiment-actions button,
+    .exercise-actions button {
+        width: 100%;
     }
 }

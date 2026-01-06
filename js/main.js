@@ -56,6 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Setup exercise buttons
     setupExerciseButtons();
 
+    // Setup universal navigation (replaces inline onclick)
+    setupUniversalNavigation();
+
     // Setup keyboard shortcuts
     setupKeyboardControls();
 
@@ -162,9 +165,15 @@ function navigateToSection(sectionId, context = null) {
         });
 
         // Handle section-specific setup
-        if (sectionId === 'practice' && context) {
-            // If navigating to practice with a specific exercise context
-            loadExerciseInPracticeMode(context);
+        if (sectionId === 'practice') {
+            if (visualizer) {
+                // Ensure canvas is correctly sized when it becomes visible
+                visualizer.setCanvasSize();
+            }
+            if (context) {
+                // If navigating to practice with a specific exercise context
+                loadExerciseInPracticeMode(context);
+            }
         }
     }
 
@@ -493,7 +502,7 @@ function playDemonstration(patternType) {
     }
 
     // Play audio pattern
-    audioEngine.playExercise(patternType, audioEngine.currentTempo);
+    audioEngine.playExercise(patternType, audioEngine.currentTempo, false);
 
     showNotification(`播放中：${patternType}`, 'info');
 }
@@ -525,7 +534,7 @@ function playExerciseDemo(exerciseId, speed = 'normal') {
     }
 
     // Play pattern
-    audioEngine.playExercise(exerciseId, tempo);
+    audioEngine.playExercise(exerciseId, tempo, false);
 
     showNotification(`播放中：${exercise.name || exerciseId} (${tempo} BPM)`, 'info');
 }
@@ -667,11 +676,32 @@ style.textContent = `
 document.head.appendChild(style);
 
 // ========================================
-// GLOBAL FUNCTIONS (called from HTML)
+// UNIVERSAL NAVIGATION (replaces inline onclick)
 // ========================================
 
 /**
- * Global function for inline onclick handlers
+ * Setup event delegation for all navigation buttons
+ * This replaces inline onclick handlers
+ */
+function setupUniversalNavigation() {
+    // Event delegation on document for all [data-navigate] buttons
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-navigate]');
+        if (!btn) return;
+
+        const section = btn.dataset.navigate;
+        const pattern = btn.dataset.pattern || null;
+
+        navigateToSection(section, pattern);
+    });
+}
+
+// ========================================
+// GLOBAL FUNCTIONS
+// ========================================
+
+/**
+ * Keep global function for backward compatibility
  */
 window.navigateToSection = navigateToSection;
 

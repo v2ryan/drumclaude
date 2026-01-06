@@ -75,7 +75,15 @@
                     </div>
                 </div>
 
-                <button class="cta-btn" onclick="navigateToSection('practice')">開始練習</button>
+                <div class="cta-section">
+                    <button class="cta-btn cta-primary" data-navigate="practice">
+                        開始練習
+                        <span class="btn-arrow">→</span>
+                    </button>
+                    <button class="cta-btn cta-secondary" data-navigate="learn">
+                        先了解鼓法
+                    </button>
+                </div>
             </div>
         </section>
 
@@ -97,7 +105,7 @@
                         <p><strong>速度：</strong>80 bpm（四分音符或八分音符）</p>
                         <div class="rudiment-actions">
                             <button class="btn-listen" data-pattern="single-stroke">▶ 聆聽</button>
-                            <button class="btn-practice" onclick="navigateToSection('practice', 'single-stroke')">練習</button>
+                            <button class="btn-practice" data-navigate="practice" data-pattern="single-stroke">練習</button>
                         </div>
                         <div class="teaching-note">
                             💡 <strong>教學提示：</strong>想像節拍器滴答聲 - 兩隻手聲音要完全一致。
@@ -113,7 +121,7 @@
                         <p><strong>速度：</strong>80 bpm（十六分音符成雙）</p>
                         <div class="rudiment-actions">
                             <button class="btn-listen" data-pattern="double-stroke">▶ 聆聽</button>
-                            <button class="btn-practice" onclick="navigateToSection('practice', 'double-stroke')">練習</button>
+                            <button class="btn-practice" data-navigate="practice" data-pattern="double-stroke">練習</button>
                         </div>
                         <div class="teaching-note">
                             💡 <strong>教學提示：</strong>讓鼓棒自然反彈，第二下使用反彈力。
@@ -129,7 +137,7 @@
                         <p><strong>速度：</strong>80 bpm</p>
                         <div class="rudiment-actions">
                             <button class="btn-listen" data-pattern="paradiddle">▶ 聆聽</button>
-                            <button class="btn-practice" onclick="navigateToSection('practice', 'paradiddle')">練習</button>
+                            <button class="btn-practice" data-navigate="practice" data-pattern="paradiddle">練習</button>
                         </div>
                         <div class="teaching-note">
                             💡 <strong>教學提示：</strong>重音自然落在每組的第一個音。
@@ -145,7 +153,7 @@
                         <p><strong>速度：</strong>90 bpm</p>
                         <div class="rudiment-actions">
                             <button class="btn-listen" data-pattern="flam">▶ 聆聽</button>
-                            <button class="btn-practice" onclick="navigateToSection('practice', 'flam')">練習</button>
+                            <button class="btn-practice" data-navigate="practice" data-pattern="flam">練習</button>
                         </div>
                         <div class="teaching-note">
                             💡 <strong>教學提示：</strong>輕音符要低且快，主音符要高且強。兩個音幾乎同時，但不完全同時。
@@ -161,7 +169,7 @@
                         <p><strong>速度：</strong>85 bpm</p>
                         <div class="rudiment-actions">
                             <button class="btn-listen" data-pattern="double-paradiddle">▶ 聆聽</button>
-                            <button class="btn-practice" onclick="navigateToSection('practice', 'double-paradiddle')">練習</button>
+                            <button class="btn-practice" data-navigate="practice" data-pattern="double-paradiddle">練習</button>
                         </div>
                         <div class="teaching-note">
                             💡 <strong>教學提示：</strong>比單複合跳更長的型態，需要記住6個音的循環。保持流暢不要在雙擊處停頓。
@@ -176,7 +184,7 @@
                         <p><strong>速度：</strong>80 bpm</p>
                         <div class="rudiment-actions">
                             <button class="btn-listen" data-pattern="drag">▶ 聆聽</button>
-                            <button class="btn-practice" onclick="navigateToSection('practice', 'drag')">練習</button>
+                            <button class="btn-practice" data-navigate="practice" data-pattern="drag">練習</button>
                         </div>
                         <div class="teaching-note">
                             💡 <strong>教學提示：</strong>前兩下要非常快且輕，第三下是重音。類似「嗒嗒-碰」的聲音效果。
@@ -191,7 +199,7 @@
                         <p><strong>速度：</strong>90 bpm</p>
                         <div class="rudiment-actions">
                             <button class="btn-listen" data-pattern="accents">▶ 聆聽</button>
-                            <button class="btn-practice" onclick="navigateToSection('practice', 'accents')">練習</button>
+                            <button class="btn-practice" data-navigate="practice" data-pattern="accents">練習</button>
                         </div>
                         <div class="teaching-note">
                             💡 <strong>教學提示：</strong>重音要明顯高舉並用力敲擊，非重音要低且輕。音量差異要清楚可聞。
@@ -206,7 +214,7 @@
                         <p><strong>速度：</strong>70 bpm</p>
                         <div class="rudiment-actions">
                             <button class="btn-listen" data-pattern="sixteenth-coord">▶ 聆聽</button>
-                            <button class="btn-practice" onclick="navigateToSection('practice', 'sixteenth-coord')">練習</button>
+                            <button class="btn-practice" data-navigate="practice" data-pattern="sixteenth-coord">練習</button>
                         </div>
                         <div class="teaching-note">
                             💡 <strong>教學提示：</strong>這是二級最重要的協調訓練。先分開練，再合併。腳要穩定如節拍器。
@@ -460,7 +468,7 @@
                     <div class="exercise-actions">
                         <button class="btn-demo" data-exercise="single-stroke">▶ 播放示範 (80 bpm)</button>
                         <button class="btn-demo-slow" data-exercise="single-stroke">▶ 慢速播放 (60 bpm)</button>
-                        <button class="btn-start-practice" onclick="navigateToSection('practice', 'single-stroke')">開始練習</button>
+                        <button class="btn-start-practice" data-navigate="practice" data-pattern="single-stroke">開始練習</button>
                     </div>
 
                     <div class="self-check-list">
@@ -476,40 +484,40 @@
             <!-- Exercise 2: Quarter and Eighth Notes -->
             <div class="exercise-block">
                 <div class="exercise-header">
-                    <h3>Exercise 2: Quarter & Eighth Note Transitions</h3>
-                    <span class="difficulty">Difficulty: Beginner</span>
+                    <h3>課題2：四分音符及八分音符轉換 <span class="grade-badge">一級</span></h3>
+                    <span class="difficulty">難度：初級</span>
                 </div>
 
                 <div class="exercise-content">
                     <div class="exercise-steps">
-                        <h4>Pattern:</h4>
+                        <h4>節奏型態：</h4>
                         <div class="notation-display">
-                            <p>Measure 1-2: Quarter notes (♩ ♩ ♩ ♩)</p>
-                            <p>Measure 3-4: Eighth notes (♫ ♫ ♫ ♫)</p>
-                            <p>Repeat and switch smoothly</p>
+                            <p>小節1-2：四分音符 (♩ ♩ ♩ ♩)</p>
+                            <p>小節3-4：八分音符 (♫ ♫ ♫ ♫)</p>
+                            <p>重複並流暢切換</p>
                         </div>
 
-                        <h4>Learning Steps:</h4>
+                        <h4>學習步驟：</h4>
                         <ol>
-                            <li><strong>Listen:</strong> Hear the rhythm transition</li>
-                            <li><strong>Watch:</strong> See how particle spacing changes (quarter = wider, eighth = closer)</li>
-                            <li><strong>Practice:</strong> Focus on maintaining steady pulse during the transition</li>
-                            <li><strong>Challenge:</strong> Can you switch back and forth without hesitation?</li>
+                            <li><strong>聆聽：</strong>聆聽節奏轉換的方式</li>
+                            <li><strong>觀察：</strong>觀看粒子間距的變化（四分音符 = 較闊，八分音符 = 較密）</li>
+                            <li><strong>練習：</strong>專注於轉換時保持穩定脈搏</li>
+                            <li><strong>挑戰：</strong>能否毫不猶豫地來回切換？</li>
                         </ol>
                     </div>
 
                     <div class="exercise-actions">
-                        <button class="btn-demo" data-exercise="quarter-eighth">▶ Play Demo (80 bpm)</button>
-                        <button class="btn-demo-slow" data-exercise="quarter-eighth">▶ Play Slow (60 bpm)</button>
-                        <button class="btn-start-practice" onclick="navigateToSection('practice', 'quarter-eighth')">Start Practice</button>
+                        <button class="btn-demo" data-exercise="quarter-eighth">▶ 播放示範 (80 bpm)</button>
+                        <button class="btn-demo-slow" data-exercise="quarter-eighth">▶ 慢速播放 (60 bpm)</button>
+                        <button class="btn-start-practice" data-navigate="practice" data-pattern="quarter-eighth">開始練習</button>
                     </div>
 
                     <div class="self-check-list">
-                        <h4>Self-Assessment Checklist:</h4>
-                        <label><input type="checkbox" data-check="qe-1"> Quarter notes are steady and even</label>
-                        <label><input type="checkbox" data-check="qe-2"> Eighth notes are exactly twice as fast as quarters</label>
-                        <label><input type="checkbox" data-check="qe-3"> Transition between patterns is smooth (no hesitation)</label>
-                        <label><input type="checkbox" data-check="qe-4"> Can repeat the pattern 4 times without losing tempo</label>
+                        <h4>自我評估清單：</h4>
+                        <label><input type="checkbox" data-check="qe-1"> 四分音符穩定且均勻</label>
+                        <label><input type="checkbox" data-check="qe-2"> 八分音符速度剛好是四分音符的兩倍</label>
+                        <label><input type="checkbox" data-check="qe-3"> 兩個節奏型態之間轉換流暢（無停頓）</label>
+                        <label><input type="checkbox" data-check="qe-4"> 能重複此型態4次而不失去速度</label>
                     </div>
                 </div>
             </div>
@@ -517,42 +525,42 @@
             <!-- Exercise 3: Basic Rock Beat (Full Kit Coordination) -->
             <div class="exercise-block">
                 <div class="exercise-header">
-                    <h3>Exercise 3: Basic Rock Beat</h3>
-                    <span class="difficulty">Difficulty: Intermediate</span>
+                    <h3>課題3：基本搖滾節奏 <span class="grade-badge">一級</span></h3>
+                    <span class="difficulty">難度：中級</span>
                 </div>
 
                 <div class="exercise-content">
                     <div class="exercise-steps">
-                        <h4>Pattern (4/4 time):</h4>
+                        <h4>節奏型態（4/4拍）：</h4>
                         <div class="notation-display">
-                            <p><strong>Bass Drum:</strong> Beats 1 and 3</p>
-                            <p><strong>Snare Drum:</strong> Beats 2 and 4</p>
-                            <p><strong>Hi-Hat:</strong> Steady eighth notes (all beats)</p>
+                            <p><strong>大鼓：</strong>第1及第3拍</p>
+                            <p><strong>小鼓：</strong>第2及第4拍</p>
+                            <p><strong>腳踏鈸：</strong>穩定的八分音符（全部拍子）</p>
                         </div>
 
-                        <h4>Learning Steps:</h4>
+                        <h4>學習步驟：</h4>
                         <ol>
-                            <li><strong>Isolate Parts:</strong> Practice each drum separately first</li>
-                            <li><strong>Combine 2:</strong> Bass + Snare, then add Hi-Hat last</li>
-                            <li><strong>Listen:</strong> Play demo to hear how parts lock together</li>
-                            <li><strong>Watch:</strong> See the three-color pattern in the visualizer</li>
-                            <li><strong>Practice:</strong> Start slow (60 bpm), increase gradually</li>
+                            <li><strong>分開練習：</strong>先分別練習每個鼓件</li>
+                            <li><strong>組合兩件：</strong>大鼓 + 小鼓，最後才加入腳踏鈸</li>
+                            <li><strong>聆聽：</strong>播放示範以聆聽各部分如何結合</li>
+                            <li><strong>觀察：</strong>在視覺化畫面中觀看三種顏色的型態</li>
+                            <li><strong>練習：</strong>從慢速開始（60 bpm），逐步加快</li>
                         </ol>
                     </div>
 
                     <div class="exercise-actions">
-                        <button class="btn-demo" data-exercise="rock-beat">▶ Play Demo (80 bpm)</button>
-                        <button class="btn-demo-slow" data-exercise="rock-beat">▶ Play Slow (60 bpm)</button>
-                        <button class="btn-start-practice" onclick="navigateToSection('practice', 'rock-beat')">Start Practice</button>
+                        <button class="btn-demo" data-exercise="rock-beat">▶ 播放示範 (80 bpm)</button>
+                        <button class="btn-demo-slow" data-exercise="rock-beat">▶ 慢速播放 (60 bpm)</button>
+                        <button class="btn-start-practice" data-navigate="practice" data-pattern="rock-beat">開始練習</button>
                     </div>
 
                     <div class="self-check-list">
-                        <h4>Self-Assessment Checklist:</h4>
-                        <label><input type="checkbox" data-check="rb-1"> All three parts maintain steady pulse independently</label>
-                        <label><input type="checkbox" data-check="rb-2"> Bass and Snare land precisely on correct beats</label>
-                        <label><input type="checkbox" data-check="rb-3"> Hi-Hat eighth notes remain even throughout</label>
-                        <label><input type="checkbox" data-check="rb-4"> Can play continuously for 1 minute without stopping</label>
-                        <label><input type="checkbox" data-check="rb-5"> Body remains relaxed (no tension in shoulders/arms)</label>
+                        <h4>自我評估清單：</h4>
+                        <label><input type="checkbox" data-check="rb-1"> 三個部分各自獨立保持穩定脈搏</label>
+                        <label><input type="checkbox" data-check="rb-2"> 大鼓及小鼓準確落在正確拍子上</label>
+                        <label><input type="checkbox" data-check="rb-3"> 腳踏鈸的八分音符全程保持均勻</label>
+                        <label><input type="checkbox" data-check="rb-4"> 能連續演奏1分鐘而不停頓</label>
+                        <label><input type="checkbox" data-check="rb-5"> 身體保持放鬆（肩膀及手臂無緊張）</label>
                     </div>
                 </div>
             </div>
@@ -576,7 +584,7 @@
                     <div class="exercise-actions">
                         <button class="btn-demo" data-exercise="flam">▶ 播放示範 (90 bpm)</button>
                         <button class="btn-demo-slow" data-exercise="flam">▶ 慢速播放 (70 bpm)</button>
-                        <button class="btn-start-practice" onclick="navigateToSection('practice', 'flam')">開始練習</button>
+                        <button class="btn-start-practice" data-navigate="practice" data-pattern="flam">開始練習</button>
                     </div>
                     <div class="self-check-list">
                         <h4>自我評估清單：</h4>

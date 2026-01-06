@@ -25,13 +25,15 @@ class RhythmVisualizer {
         window.addEventListener('resize', () => this.setCanvasSize());
 
         // Matter.js modules
-        const { Engine, Render, World, Bodies, Body, Events } = Matter;
+        const { Engine, Render, World, Bodies, Body, Events, Runner } = Matter;
 
         // Create Matter.js engine with ZERO GRAVITY
-        // EDUCATIONAL NOTE: gravity: { x: 0, y: 0 } creates perpetual motion
         this.engine = Engine.create({
             gravity: { x: 0, y: 0 }
         });
+
+        // Create runner
+        this.runner = Runner.create();
 
         // Create renderer
         this.render = Render.create({
@@ -41,7 +43,7 @@ class RhythmVisualizer {
                 width: this.canvas.width,
                 height: this.canvas.height,
                 wireframes: false, // Use filled shapes
-                background: 'transparent',
+                background: '#1e3c72', // Dark blue background (matches CSS gradient)
                 pixelRatio: window.devicePixelRatio || 1
             }
         });
@@ -50,13 +52,39 @@ class RhythmVisualizer {
         this.createBoundaries();
 
         // Start the engine and renderer
-        Engine.run(this.engine);
+        Runner.run(this.runner, this.engine);
         Render.run(this.render);
+
+        // EDUCATIONAL NOTE: ResizeObserver detects when the canvas becomes visible or changes size
+        // This fixes the issue where boundaries were 0x0 because the section was hidden at start.
+        this.resizeObserver = new ResizeObserver(() => {
+            this.setCanvasSize();
+        });
+        this.resizeObserver.observe(this.canvas);
+
+        console.log('✅ RhythmVisualizer initialized:', {
+            canvasWidth: this.canvas.width,
+            canvasHeight: this.canvas.height,
+            engine: this.engine,
+            renderer: this.render
+        });
 
         // Particle configuration
         this.particleConfig = {
             snare: {
                 color: '#e74c3c',  // Red
+                radius: 15,
+                mass: 1,
+                label: 'snare'
+            },
+            'snare-right': {       // Alias for right hand
+                color: '#e74c3c',
+                radius: 15,
+                mass: 1,
+                label: 'snare'
+            },
+            'snare-left': {        // Alias for left hand
+                color: '#ff7675',  // Slightly lighter red
                 radius: 15,
                 mass: 1,
                 label: 'snare'
@@ -72,6 +100,18 @@ class RhythmVisualizer {
                 radius: 12,        // Smaller for "hihat" feel
                 mass: 0.8,
                 label: 'hihat'
+            },
+            tom: {
+                color: '#9b59b6',  // Purple
+                radius: 18,
+                mass: 1.2,
+                label: 'tom'
+            },
+            crash: {
+                color: '#f1c40f',  // Bright Yellow
+                radius: 25,        // Largest for crash
+                mass: 2,
+                label: 'crash'
             }
         };
 
@@ -81,6 +121,14 @@ class RhythmVisualizer {
 
         // Cleanup old particles periodically
         this.startParticleCleanup();
+
+        // Add test particles to verify visualization is working
+        setTimeout(() => {
+            console.log('🧪 Adding test particles...');
+            this.addParticle('snare', 1.0);
+            this.addParticle('bass', 1.0);
+            this.addParticle('hihat', 1.0);
+        }, 500);
     }
 
     /**
@@ -88,17 +136,21 @@ class RhythmVisualizer {
      */
     setCanvasSize() {
         const rect = this.canvas.getBoundingClientRect();
-        this.canvas.width = rect.width;
-        this.canvas.height = rect.height;
 
-        if (this.render) {
-            this.render.options.width = rect.width;
-            this.render.options.height = rect.height;
-            this.render.canvas.width = rect.width;
-            this.render.canvas.height = rect.height;
+        // Only update if we have actual dimensions
+        if (rect.width > 0 && rect.height > 0) {
+            this.canvas.width = rect.width;
+            this.canvas.height = rect.height;
 
-            // Recreate boundaries when canvas resizes
-            this.createBoundaries();
+            if (this.render) {
+                this.render.options.width = rect.width;
+                this.render.options.height = rect.height;
+                this.render.canvas.width = rect.width;
+                this.render.canvas.height = rect.height;
+
+                // Recreate boundaries when canvas resizes
+                this.createBoundaries();
+            }
         }
     }
 
@@ -199,6 +251,14 @@ class RhythmVisualizer {
         this.particles.push({
             body: particle,
             timestamp: Date.now()
+        });
+
+        console.log('🎨 Particle added:', {
+            drumType,
+            position: { x, y },
+            velocity: { velocityX, velocityY },
+            color: config.color,
+            totalParticles: this.particles.length
         });
 
         // EDUCATIONAL NOTE: Limit particles to prevent performance issues

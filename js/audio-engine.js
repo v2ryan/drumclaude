@@ -128,7 +128,34 @@ class AudioEngine {
             octaves: 1.5
         }).toDestination();
 
-        console.log('Fallback synth sounds created (R/L differentiation enabled)');
+        // Tom: Mid-low, resonating sound (Grade 2)
+        this.tomSynth = new Tone.MembraneSynth({
+            pitchDecay: 0.1,
+            octaves: 3,
+            oscillator: { type: 'sine' },
+            envelope: {
+                attack: 0.001,
+                decay: 0.5,
+                sustain: 0,
+                release: 0.5
+            }
+        }).toDestination();
+
+        // Crash: Explosive, long decay metal sound (Grade 2)
+        this.crashSynth = new Tone.MetalSynth({
+            frequency: 200,
+            envelope: {
+                attack: 0.005,
+                decay: 1.0,
+                release: 0.5
+            },
+            harmonicity: 6.5,
+            modulationIndex: 40,
+            resonance: 6000,
+            octaves: 2.5
+        }).toDestination();
+
+        console.log('Fallback synth sounds created (R/L, Tom, Crash enabled)');
     }
 
     /**
@@ -187,6 +214,14 @@ class AudioEngine {
                 case 'hihat':
                     this.hihatSynth.volume.value = volume;
                     this.hihatSynth.triggerAttackRelease('16n');
+                    break;
+                case 'tom':
+                    this.tomSynth.volume.value = volume;
+                    this.tomSynth.triggerAttackRelease('A2', '4n');
+                    break;
+                case 'crash':
+                    this.crashSynth.volume.value = volume;
+                    this.crashSynth.triggerAttackRelease('1n');
                     break;
             }
 
@@ -275,7 +310,7 @@ class AudioEngine {
      * @param {Array} pattern - Array of { drum: 'snare', time: '0:0:0', velocity: 1.0 }
      * @param {number} tempo - Optional tempo override
      */
-    playPattern(pattern, tempo = null) {
+    playPattern(pattern, tempo = null, loop = true) {
         // Stop any currently playing sequence
         this.stopPattern();
 
@@ -290,7 +325,29 @@ class AudioEngine {
         }, pattern);
 
         this.currentSequence.start(0);
-        this.currentSequence.loop = true;  // Repeat for practice
+        this.currentSequence.loop = loop;  // Repeat for practice if loop is true
+
+        // If not looping, we need to know when it ends
+        if (!loop) {
+            // Find the last event time to determine duration
+            const lastEvent = pattern.reduce((prev, curr) => {
+                const prevTime = Tone.Time(prev.time).toSeconds();
+                const currTime = Tone.Time(curr.time).toSeconds();
+                return currTime > prevTime ? curr : prev;
+            });
+
+            const duration = Tone.Time(lastEvent.time).toSeconds() + 1; // Add 1s buffer
+
+            this.currentSequence.loop = false;
+
+            // Set a timeout to update isPlaying state when done
+            setTimeout(() => {
+                if (this.currentSequence && !this.currentSequence.loop) {
+                    this.isPlaying = false;
+                    console.log('Demonstration finished');
+                }
+            }, duration * 1000 * (60 / this.currentTempo));
+        }
 
         Tone.Transport.start();
         this.isPlaying = true;
@@ -318,7 +375,7 @@ class AudioEngine {
      * @param {string} exerciseType - 'single-stroke', 'double-stroke', etc.
      * @param {number} tempo - BPM
      */
-    playExercise(exerciseType, tempo = 80) {
+    playExercise(exerciseType, tempo = 80, loop = true) {
         // Pattern definitions
         const patterns = {
             // Grade 1
@@ -343,7 +400,7 @@ class AudioEngine {
 
         const pattern = patterns[exerciseType];
         if (pattern) {
-            this.playPattern(pattern, tempo);
+            this.playPattern(pattern, tempo, loop);
         } else {
             console.error(`Unknown exercise: ${exerciseType}`);
         }

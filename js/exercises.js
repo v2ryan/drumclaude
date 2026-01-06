@@ -370,6 +370,103 @@ const EXERCISES = {
         ],
 
         grade2Extension: 'Compound time signatures (6/8, 9/8)'
+    },
+
+    /* ====================================
+       GRADE 2 RUDIMENTS & RHYTHMS
+       ==================================== */
+
+    'flam': {
+        id: 'flam',
+        name: 'Flam',
+        grade: 2,
+        difficulty: 'intermediate',
+        targetTempo: 90,
+        minTempo: 70,
+
+        focusAreas: [
+            'Grace note vs main note',
+            'Consistency of "thickness" in sound',
+            'Alternating lead hand'
+        ],
+
+        sticking: 'lR rL lR rL',
+
+        instructions: [
+            'The flam consists of a soft "grace note" followed by a strong "main note"',
+            'The two hits should be very close together but not simultaneous',
+            'Keep the grace note hand low (near the drum) and the main note hand higher',
+            'Think of the sound "flam" itself'
+        ],
+
+        checklistItems: [
+            'Can clearly hear two distinct notes in each flam',
+            'Grace note is consistently softer than the main note',
+            'Can play flams starting with both right and left hands',
+            'Consistent timing between grace and main notes'
+        ]
+    },
+
+    'triplets': {
+        id: 'triplets',
+        name: 'Triplets (3:2)',
+        grade: 2,
+        difficulty: 'intermediate',
+        targetTempo: 80,
+        minTempo: 60,
+
+        focusAreas: [
+            'Dividing the beat into three equal parts',
+            'Alternating sticking (RLR LRL)',
+            'Emphasis on the first note of each triplet'
+        ],
+
+        sticking: 'RLR LRL RLR LRL',
+
+        instructions: [
+            'Divide each beat into three even strokes',
+            'Use alternating hands: R L R, then L R L',
+            'The lead hand changes with every beat',
+            'Think of the word "Trip-le-let" for counting'
+        ],
+
+        checklistItems: [
+            'All three notes in each triplet are evenly spaced',
+            'Can count "1-trip-let, 2-trip-let" steadily',
+            'Lead hand switches correctly on each beat',
+            'First note of each triplet is slightly emphasized'
+        ]
+    },
+
+    'sixteenth-notes': {
+        id: 'sixteenth-notes',
+        name: 'Sixteenth Notes',
+        grade: 2,
+        difficulty: 'intermediate',
+        targetTempo: 80,
+        minTempo: 60,
+
+        focusAreas: [
+            'Dividing the beat into four equal parts',
+            'Speed and precision',
+            'Stamina development'
+        ],
+
+        sticking: 'RLRL RLRL RLRL RLRL',
+
+        instructions: [
+            'Divide each beat into four even strokes',
+            'Count as "1 e & a, 2 e & a..."',
+            'Focus on extreme evenness between all 16 notes in a bar',
+            'Keep the strokes small and relaxed for speed'
+        ],
+
+        checklistItems: [
+            'Can maintain steady speed for 30 seconds',
+            'All 16 notes sound identical in volume',
+            'Notes are perfectly evenly spaced',
+            'Arms and shoulders remain relaxed'
+        ]
     }
 
     /* ====================================
